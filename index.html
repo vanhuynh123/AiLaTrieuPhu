@@ -31,11 +31,13 @@
         let quiz1 = new quizz("Bỏ ngoài nướng trong, ăn ngoài bỏ trong là gì?",["khoai lang","bắp ngô","củ mì","quả ổi"],"bắp ngô");
         let quiz2 = new quizz("Vũ điệu truyền thống của đảo hawai là gì?",["Điệu nhảy Hula","Điệu nhảy cha cha cha","Vũ điệu SamBa","Vũ điệu tango"],"Điệu nhảy Hula");
         let quiz3 = new quizz("Hành tinh nào là hành tinh được Galie phát hiện năm 1600",["Sao Kim","Sao Thổ","Sao Hỏa","Sao Mộc"],"Sao Mộc");
-        let game1 = new gameManager(3);
+        let quiz4 = new quizz("Hoa hồng là biểu tượng của gì?",["tình yêu","tình bạn","sang trọng, quý phái","sự sống, tăng thêm phúc lộc"],"tình yêu");
+        let game1 = new gameManager(4);
         let score =0;
         game1.addQuizz(quiz1);
         game1.addQuizz(quiz2);
         game1.addQuizz(quiz3);
+        game1.addQuizz(quiz4);
         console.log(game1);
         function displayQuiz(index){
             console.log(game1.quizs[index].answer);
