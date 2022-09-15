@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai là triệu phú</title>
+    <script src="quizz.js"></script>
+    <script src="gameManager.js"></script>
+    <link href="css.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="quizz">
+        <div id="question">
+           
+        </div>
+    
+       <span class="canhle">1</span> <button class="ans" id="ans_1" onclick="chooseAns(this.id)">1</button><br/>
+       <span class="canhle">2</span> <button class="ans" id="ans_2" onclick="chooseAns(this.id)">2</button><br/>
+       <span class="canhle">3</span> <button class="ans" id="ans_3" onclick="chooseAns(this.id)">3</button><br/>
+       <span class="canhle">4</span> <button class="ans" id="ans_4" onclick="chooseAns(this.id)">4</button>
+      
+    </div>
+    <button onclick="nextQuiz()">Next Quizz</button>
+    <button id="restart">Reset Quizz</button>
+    
+    <div id="tinhdiem">
+       
+    </div>
+    <script>
+        let quiz1 = new quizz("Bỏ ngoài nướng trong, ăn ngoài bỏ trong là gì?",["khoai lang","bắp ngô","củ mì","quả ổi"],"bắp ngô");
+        let quiz2 = new quizz("Vũ điệu truyền thống của đảo hawai là gì?",["Điệu nhảy Hula","Điệu nhảy cha cha cha","Vũ điệu SamBa","Vũ điệu tango"],"Điệu nhảy Hula");
+        let quiz3 = new quizz("Hành tinh nào là hành tinh được Galie phát hiện năm 1600",["Sao Kim","Sao Thổ","Sao Hỏa","Sao Mộc"],"Sao Mộc");
+        let game1 = new gameManager(3);
+        let score =0;
+        game1.addQuizz(quiz1);
+        game1.addQuizz(quiz2);
+        game1.addQuizz(quiz3);
+        console.log(game1);
+        function displayQuiz(index){
+            console.log(game1.quizs[index].answer);
+            document.getElementById("question").innerHTML= game1.quizs[index].question;
+            for(let i=1;i<=game1.quizs[index].answer.length;i++){
+                document.getElementById('ans_'+i).innerHTML=game1.quizs[index].answer[i-1];
+            }
+        }
+        //chuyển câu hỏi
+        function nextQuiz(){
+                game1.nextQuiz();
+                displayQuiz(game1.current);
+            }
+        function endGame(){
+            game1.endGame();
+            displayQuiz(game1.current);
+        }
+        function chooseAns(id){
+            let ans = document.getElementById(id).innerHTML;
+            game1.chooseAnswer(ans);
+            if(game1.checkAnswer(ans)){
+            
+                nextQuiz();
+               
+
+            }else{
+                endGame();
+            }
+           
+        }
+            
+        displayQuiz(0);
+    </script>
+</body>
+</html>
