@@ -6,8 +6,10 @@ div#quizz {
 }
 div#question{
     width: 100%;
-    height: 100px;
+    height: 50px;
     background-color: antiquewhite;
+    text-align: center;
+    padding-top: 50px;
 }
 button.ans{
     width: 300px;
